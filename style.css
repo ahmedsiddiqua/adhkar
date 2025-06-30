@@ -1,0 +1,85 @@
+@font-face {
+    font-family: Epi;
+    src: url(../fonts/Epiphany.otf);
+  }
+
+  @font-face {
+    font-family: SpaceGrotesk;
+    src: url(../fonts/SpaceGrotesk.ttf);
+  }
+body {
+    background-color: #1d1d1d; 
+    font-family: 'SpaceGrotesk';
+    zoom: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+a:link, h1, a:visited {
+    font-family: 'Epi';
+    text-align: center;
+    color: #f7f7ff;
+    font-size: 2em;
+    text-shadow: 0 0 4px #5c5d6c;
+    text-decoration: none;
+}
+
+
+div.arabic {
+    padding: 8px;
+    border-bottom: 3px solid #5c5d6c;
+}
+
+div.translation {
+    padding: 8px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        zoom: 1;
+        padding: 1.7px;
+    }
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden; /* Ensures only one box is visible at a time */
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f7ffe7;
+    box-sizing: border-box;
+    display: none; /* Hide all boxes by default */
+    animation: fadeIn 0.5s ease-in; /* Fade-in animation */
+    border: 5px solid #5c5d6c;
+    border-top-left-radius: 25px;
+    color: #1d1d1d;
+    padding: 1.5px;
+    border-bottom-right-radius: 25px;
+    text-shadow: 0 0 0.7px #5c5d6c;
+}
+
+.box.active {
+    display: block; /* Show the active box */
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Initial position */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Final position */
+    }
+}
