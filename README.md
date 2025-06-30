@@ -11,3 +11,4 @@ You can visit [asterhyphen.netlify.app/adhkar](https://asterhyphen.netlify.app/a
 ## ❗️ Note
 All duas and translations have been taken from the Hisnul Muslim. 
 
+You will need to download the fonts from the internet and store it in a folder named ` fonts `
