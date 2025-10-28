@@ -9,6 +9,6 @@ A webpage that you can add to your homescreen as a shortcut to remotely read you
 You can visit [asterhyphen.netlify.app/adhkar](https://asterhyphen.netlify.app/adhkar/) to see how the shortcut looks like.
 
 ## ❗️ Note
-All duas and translations have been taken from the Hisnul Muslim. 
-
-You will need to download the fonts from the internet and store it in a folder named ` fonts `
+- All duas and translations have been taken from the Hisnul Muslim. 
+- The site will soon be rewritten in ReactJS
+- A mobile app version of the site is currently being considered.
