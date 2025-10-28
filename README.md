@@ -6,7 +6,7 @@ A webpage that you can add to your homescreen as a shortcut to remotely read you
 - Click on the ` Adhkar ` text to go to evening adhkar.
 
 ## 🔗 Link
-You can visit [asterhyphen.netlify.app/adhkar](https://asterhyphen.netlify.app/adhkar/) to see how the shortcut looks like.
+You can visit [asterhyphen.netlify.app/adhkar](https://asterhyphen.xyz/adhkar/) to see how the shortcut looks like.
 
 ## ❗️ Note
 - All duas and translations have been taken from the Hisnul Muslim. 
