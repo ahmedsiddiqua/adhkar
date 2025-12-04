@@ -3,7 +3,7 @@ import TerminalLayout from "../components/TerminalLayout";
 import AdhkarBox from "../components/AdhkarBox";
 import data from "../data/evening.json"; 
 
-export default function Morning() {
+export default function Evening() {
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState("");
 
@@ -38,7 +38,7 @@ export default function Morning() {
   };
 
   return (
-    <TerminalLayout title="Morning Adhkar">
+    <TerminalLayout title="Evening Adhkar">
       <div 
         onTouchStart={handleTouchStart} 
         onTouchEnd={handleTouchEnd}

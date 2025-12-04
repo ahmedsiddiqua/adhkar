@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import TerminalLayout from "../components/TerminalLayout";
 import AdhkarBox from "../components/AdhkarBox";
-import data from "../data/morning.json"; 
+import data from "../data/night.json";
 
-export default function Morning() {
+export default function Night() {
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState("");
 
@@ -38,7 +38,7 @@ export default function Morning() {
   };
 
   return (
-    <TerminalLayout title="Morning Adhkar">
+    <TerminalLayout title="Sleep Adhkar">
       <div 
         onTouchStart={handleTouchStart} 
         onTouchEnd={handleTouchEnd}
