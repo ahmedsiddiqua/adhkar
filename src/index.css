@@ -22,52 +22,77 @@
   src: url('https://asterfonts.netlify.app/Epiphany.otf');
 }
 
+/* Updated Styling for Mobile-Friendly Terminal Theme */
+
+/* Fonts */
+@font-face {
+  font-family: 'Fira Code';
+  src: url('https://fonts.gstatic.com/s/firacode/v12/uU9PCBUR8oakM2BQ7xPb3vy3.woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v8/1Ptug8zYS_SKggPNyC0ISg.woff2');
+}
+
 /* Global */
 body {
   margin: 0;
-  background: linear-gradient(180deg, #0c0c0c, #111, #0d0d0d);
-  color: #eaeaea;
-  font-family: Inter;
+  background: #0d1117; /* Dark terminal background */
+  color: #c9d1d9; /* Light text for readability */
+  font-family: 'JetBrains Mono', monospace;
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 /* Terminal container */
 .terminal {
   max-width: 700px;
-  margin: 28px auto 40px auto;
-  border-radius: 14px;
-  border: 2px solid #2c2c2c;
-  background: #1a1a1a;
+  margin: 20px auto;
+  border-radius: 12px;
+  border: 2px solid #30363d;
+  background: #161b22;
   overflow: hidden;
-  box-shadow: 0 0 18px #0006;
+  box-shadow: 0 0 20px #0008;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Header */
 .terminal-header {
-  background: #111;
-  padding: 10px 12px;
+  background: #21262d;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 }
 
-.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
 
 .red { background: #ff5f56; }
 .yellow { background: #ffbd2e; }
 .green { background: #27c93f; }
 
 .title {
-  font-family: Epi;
+  font-family: 'Fira Code', monospace;
   margin-left: 10px;
-  font-size: 1.25em;
-  color: #ddd;
+  font-size: 1.2em;
+  color: #c9d1d9;
   letter-spacing: 0.5px;
 }
 
 /* Body centered */
 .terminal-body {
-  padding: 20px 20px 0px 20px;
+  padding: 16px;
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -76,38 +101,44 @@ body {
 
 /* Adhkar card */
 .box {
-  width: 100%;
-  max-width: 600px;
-  background: #fdfdfdcc;
-  padding: 24px;
-  border-radius: 12px;
-  color: #111;
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content inside the box */
+  justify-content: center; /* Center content vertically */
+  width: 100%; /* Full width on mobile */
+  max-width: 600px; /* Limit width for larger screens */
+  padding: 20px; /* Maintain consistent padding */
+  background: #0d1117;
+  border-radius: 10px;
+  color: #c9d1d9;
   box-shadow: 0 0 14px #0003;
   overflow-y: auto;
   max-height: 60vh; /* prevents overflow */
+  border: 1px solid #30363d;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.box.slide-left { 
+.box.slide-left {
   transform: translateX(-40px);
-  opacity: 0; 
+  opacity: 0;
 }
 
-.box.slide-right { 
+.box.slide-right {
   transform: translateX(40px);
-  opacity: 0; 
+  opacity: 0;
 }
 
 .arabic {
-  font-family: 'Naskh';
-  font-size: 1.55em;
-  line-height: 1.95;
+  font-family: 'Fira Code', monospace;
+  font-size: 1.2em; /* Adjusted for mobile */
+  line-height: 1.6;
   margin-bottom: 15px;
 }
 
 .translation {
-  font-size: 1.1em;
-  line-height: 1.55;
+  font-size: 1em; /* Adjusted for mobile */
+  line-height: 1.4;
 }
 
 /* Controls */
@@ -121,14 +152,15 @@ body {
 }
 
 .controls button {
-  background: #222;
-  padding: 10px 24px;
+  background: #21262d;
+  padding: 10px 20px;
   border-radius: 8px;
-  border: 1px solid #444;
-  color: #eee;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
   cursor: pointer;
-  font-size: 1.05em;
-  transition: background 0.2s ease, transform 0.2s ease;
+  font-size: 1em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .controls button:active {
@@ -136,7 +168,8 @@ body {
 }
 
 .controls button:hover {
-  background: #2c2c2c;
+  background: #161b22;
+  box-shadow: 0 0 8px #58a6ff;
 }
 
 /* Footer */
@@ -145,6 +178,23 @@ body {
   padding-bottom: 20px;
   text-align: center;
   font-size: 0.9em;
-  color: #aaa;
+  color: #8b949e;
   opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terminal {
+    max-width: 90%;
+  }
+
+  .box {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .controls button {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
 }
