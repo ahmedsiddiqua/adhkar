@@ -57,7 +57,7 @@ export default function Morning() {
         <button onClick={next}>Next ➡</button>
       </div>
 
-      <div className="footer">Made with ❤️ by Aster.</div>
+      <div className="footer">Made with ❤️ by Aster.-</div>
     </TerminalLayout>
   );
 }
