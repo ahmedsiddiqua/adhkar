@@ -11,6 +11,5 @@ You can visit [adhkar.asterhyphen.xyz/](https://adhkar.asterhyphen.xyz/) to see 
 ## ❗️ Note
 - All duas and translations have been taken from the Hisnul Muslim.
 - ~~The site will soon be rewritten in ReactJS~~ ✅
-- A mobile app version of the site is currently being considered.
 > This was originally written only in *HTML, CSS and JS* and the *ReactJS* rewrite was my first ReactJS project using the basics of react to implement this simple page using the concept of ` routes ` and also ` conditional rendering `.
 
