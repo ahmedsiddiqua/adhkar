@@ -32,11 +32,14 @@ export default function Morning() {
       />
 
       <div className="controls">
-        <button onClick={prev}>⬅ Previous</button>
+        <button className="next-btn" onClick={next}>Next ➡</button>
         <span>{index + 1} / {data.length}</span>
-        <button onClick={next}>Next ➡</button>
+        <button className="prev-btn" onClick={prev}>⬅ Previous</button>
       </div>
 
+      <div className="desktop-hint">
+        {index === 0 ? "Click Tab and then Enter to go to next" : "Click Enter to go to next"}
+      </div>
       <div className="footer">Made with ❤️ by Aster.-</div>
     </TerminalLayout>
   );

@@ -6,7 +6,7 @@ headers = []
 [functions."*"]
 
 [build]
-publish = "/Users/aster/Desktop/adhkar/rewrite/dist"
+publish = "/Volumes/Aster SSD/envdev/adhkar/dist"
 publishOrigin = "ui"
 commandOrigin = "ui"
 command = "npm run build"
