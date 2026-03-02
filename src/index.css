@@ -22,6 +22,8 @@ html,
 body,
 #root {
   min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -36,6 +38,7 @@ body {
   width: min(980px, 100% - 28px);
   margin: 22px auto;
   position: relative;
+  max-width: 100%;
 }
 
 .terminal {
@@ -149,6 +152,7 @@ body {
   color: var(--text-main);
   box-shadow: inset 0 -4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 260ms ease;
+  overflow-x: hidden;
 }
 
 .box.slide-left {
@@ -184,6 +188,9 @@ body {
   font-size: clamp(1rem, 1.95vw, 1.08rem);
   line-height: 1.75;
   color: var(--text-soft);
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .controls {
