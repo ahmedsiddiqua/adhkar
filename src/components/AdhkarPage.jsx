@@ -9,6 +9,8 @@ export default function AdhkarPage({ title, data }) {
   const timeoutRef = useRef(null);
 
   const moveTo = (direction) => {
+    if (data.length <= 1) return;
+
     const directionClass = direction === "next" ? "slide-left" : "slide-right";
     setAnimate(directionClass);
 
@@ -41,6 +43,12 @@ export default function AdhkarPage({ title, data }) {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  useEffect(() => {
+    setIndex(0);
+    setAnimate("");
+    setTouchStartX(null);
+  }, [data]);
 
   useEffect(() => {
     return () => {
@@ -96,7 +104,7 @@ export default function AdhkarPage({ title, data }) {
         </button>
       </div>
 
-      <p className="desktop-hint">Use left/right keys, enter, or swipe.</p>
+      <p className="desktop-hint">Use left/right keys or swipe.</p>
       <p className="footer">Made by Aster</p>
     </TerminalLayout>
   );

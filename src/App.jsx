@@ -1,26 +1,50 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Morning from "./pages/Morning";
-import Evening from "./pages/Evening";
-import Night from "./pages/Night";
+import { useEffect, useState } from "react";
+import AdhkarPage from "./components/AdhkarPage";
+import morningData from "./data/morning.json";
+import eveningData from "./data/evening.json";
+import nightData from "./data/night.json";
 
-function getDefaultPath() {
+function getTimeSection() {
   const hour = new Date().getHours();
 
-  if (hour >= 3 && hour < 15) return "/morning";
-  if (hour >= 15 && hour < 20) return "/evening";
-  return "/night";
+  if (hour >= 3 && hour < 15) return "morning";
+  if (hour >= 15 && hour < 20) return "evening";
+  return "night";
+}
+
+function getCurrentContent(section) {
+  if (section === "morning") {
+    return { title: "Morning Adhkar", data: morningData };
+  }
+
+  if (section === "evening") {
+    return { title: "Evening Adhkar", data: eveningData };
+  }
+
+  return { title: "Sleep Adhkar", data: nightData };
 }
 
 export default function App() {
+  const [section, setSection] = useState(getTimeSection);
+
+  useEffect(() => {
+    const syncSection = () => {
+      const nextSection = getTimeSection();
+      setSection((prevSection) => (prevSection === nextSection ? prevSection : nextSection));
+    };
+
+    syncSection();
+    const intervalId = setInterval(syncSection, 60 * 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const { title, data } = getCurrentContent(section);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to={getDefaultPath()} replace />} />
-        <Route path="/morning" element={<Morning />} />
-        <Route path="/evening" element={<Evening />} />
-        <Route path="/night" element={<Night />} />
-        <Route path="*" element={<Navigate to={getDefaultPath()} replace />} />
-      </Routes>
-    </BrowserRouter>
+    <AdhkarPage
+      key={section}
+      title={title}
+      data={data}
+    />
   );
 }
