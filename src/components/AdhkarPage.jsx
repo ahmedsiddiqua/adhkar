@@ -5,7 +5,6 @@ import AdhkarBox from "./AdhkarBox";
 export default function AdhkarPage({ title, data }) {
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState("");
-  const [touchStartX, setTouchStartX] = useState(null);
   const timeoutRef = useRef(null);
 
   const moveTo = (direction) => {
@@ -47,7 +46,6 @@ export default function AdhkarPage({ title, data }) {
   useEffect(() => {
     setIndex(0);
     setAnimate("");
-    setTouchStartX(null);
   }, [data]);
 
   useEffect(() => {
@@ -57,24 +55,6 @@ export default function AdhkarPage({ title, data }) {
       }
     };
   }, []);
-
-  const handleTouchStart = (event) => {
-    setTouchStartX(event.changedTouches[0]?.clientX ?? null);
-  };
-
-  const handleTouchEnd = (event) => {
-    if (touchStartX === null) return;
-    const touchEndX = event.changedTouches[0]?.clientX;
-    if (typeof touchEndX !== "number") return;
-
-    const deltaX = touchEndX - touchStartX;
-    const threshold = 36;
-
-    if (deltaX > threshold) moveTo("prev");
-    if (deltaX < -threshold) moveTo("next");
-
-    setTouchStartX(null);
-  };
 
   const progress = ((index + 1) / data.length) * 100;
 
@@ -88,8 +68,6 @@ export default function AdhkarPage({ title, data }) {
         arabic={data[index].arabic}
         translation={data[index].translation}
         animate={animate}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
       />
 
       <div className="controls">
@@ -104,7 +82,7 @@ export default function AdhkarPage({ title, data }) {
         </button>
       </div>
 
-      <p className="desktop-hint">Use left/right keys or swipe.</p>
+      <p className="desktop-hint">Use left/right keys.</p>
       <p className="footer">Made by Aster</p>
     </TerminalLayout>
   );

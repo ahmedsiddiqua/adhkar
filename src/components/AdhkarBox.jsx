@@ -1,6 +1,6 @@
-export default function AdhkarBox({ arabic, translation, animate, onTouchStart, onTouchEnd }) {
+export default function AdhkarBox({ arabic, translation, animate }) {
   return (
-    <div className={`box ${animate}`} tabIndex={-1} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <div className={`box ${animate}`} tabIndex={-1}>
       <div className="arabic">{arabic}</div>
       <div className="translation">{translation}</div>
     </div>
