@@ -6,11 +6,14 @@ export default function AdhkarPage({ title, data }) {
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState("");
   const timeoutRef = useRef(null);
+  const frameRef = useRef(null);
+  const isAnimatingRef = useRef(false);
 
   const moveTo = (direction) => {
-    if (data.length <= 1) return;
+    if (data.length <= 1 || isAnimatingRef.current) return;
 
-    const directionClass = direction === "next" ? "slide-left" : "slide-right";
+    isAnimatingRef.current = true;
+    const directionClass = direction === "next" ? "slide-out-left" : "slide-out-right";
     setAnimate(directionClass);
 
     timeoutRef.current = setTimeout(() => {
@@ -19,8 +22,16 @@ export default function AdhkarPage({ title, data }) {
       } else {
         setIndex((i) => (i - 1 + data.length) % data.length);
       }
-      setAnimate("");
-    }, 180);
+
+      setAnimate(direction === "next" ? "slide-in-right" : "slide-in-left");
+
+      frameRef.current = requestAnimationFrame(() => {
+        frameRef.current = requestAnimationFrame(() => {
+          setAnimate("");
+          isAnimatingRef.current = false;
+        });
+      });
+    }, 110);
   };
 
   useEffect(() => {
@@ -46,12 +57,16 @@ export default function AdhkarPage({ title, data }) {
   useEffect(() => {
     setIndex(0);
     setAnimate("");
+    isAnimatingRef.current = false;
   }, [data]);
 
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
+      }
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
       }
     };
   }, []);
