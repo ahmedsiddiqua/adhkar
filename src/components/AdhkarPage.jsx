@@ -8,6 +8,7 @@ export default function AdhkarPage({ title, data }) {
   const timeoutRef = useRef(null);
   const frameRef = useRef(null);
   const isAnimatingRef = useRef(false);
+  const boxRef = useRef(null);
 
   const moveTo = (direction) => {
     if (data.length <= 1 || isAnimatingRef.current) return;
@@ -61,6 +62,10 @@ export default function AdhkarPage({ title, data }) {
   }, [data]);
 
   useEffect(() => {
+    boxRef.current?.scrollTo({ top: 0, behavior: "auto" });
+  }, [index]);
+
+  useEffect(() => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -80,6 +85,7 @@ export default function AdhkarPage({ title, data }) {
       </div>
 
       <AdhkarBox
+        ref={boxRef}
         arabic={data[index].arabic}
         translation={data[index].translation}
         animate={animate}
